@@ -14,8 +14,8 @@ export function rotateCamera(
   const spherical = new THREE.Spherical().setFromVector3(offset);
 
   // Scale for natural feel: ~2 radians across full hand sweep
-  spherical.theta -= dx * 2.0;
-  spherical.phi -= dy * 2.0;
+  spherical.theta -= dx * 4.0;
+  spherical.phi -= dy * 4.0;
 
   // Clamp phi to avoid flipping
   spherical.phi = Math.max(0.1, Math.min(Math.PI - 0.1, spherical.phi));
@@ -60,7 +60,7 @@ export function panCamera(
   camera.matrix.extractBasis(right, up, new THREE.Vector3());
 
   const dist = camera.position.distanceTo(target);
-  const panSpeed = dist * 0.5;
+  const panSpeed = dist * 1.2;
 
   const panOffset = new THREE.Vector3()
     .addScaledVector(right, dx * panSpeed)
